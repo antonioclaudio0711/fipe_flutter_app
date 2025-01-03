@@ -17,7 +17,9 @@ dependencies:
   dio: ^5.7.0 # Biblioteca utilizada para realização de requisições HTTP e conexão com API
   cookie_jar: ^4.0.8 # Biblioteca utilizada para realização de requisições HTTP e conexão com API
   dio_cookie_manager: ^3.1.1 # Biblioteca utilizada para realização de requisições HTTP e conexão com API
+  fpdart: ^1.1.1 # Biblioteca utilizada para realizar validações após requisições HTTP e conexão com API
   shared_preferences: ^2.3.5 # Biblioteca utilizada para armazenamento interno
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:

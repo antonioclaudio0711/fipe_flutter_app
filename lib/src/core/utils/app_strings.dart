@@ -4,4 +4,7 @@ class AppStrings {
   static const singleConsultationString = 'Consulta avulsa';
   static const registeredVehiclesUnfoundString =
       'Inexistência de veículos cadastrados!';
+  static const typeVehicleSelectionString = 'Selecione o tipo de veículo:';
+  static const vehicleBrandString = 'Marca do veículo:';
+  static const vehicleModelString = 'Modelo do veículo:';
 }
