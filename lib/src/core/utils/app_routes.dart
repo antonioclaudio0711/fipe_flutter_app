@@ -1,4 +1,4 @@
 class AppRoutes {
   static const initialAppRoute = '/';
-  static const vehicleDetailsRoute = '/vehicle_details_route';
+  static const registerNewVehicleRoute = '/register_new_vehicle_route';
 }
