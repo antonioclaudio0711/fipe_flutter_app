@@ -4,6 +4,6 @@ abstract class GeneralModel {
     required this.name,
   });
 
-  final String? code;
-  final String? name;
+  final String code;
+  final String name;
 }

@@ -1,7 +1,7 @@
 import 'package:fipe_app/src/data/general/models/general_model.dart';
 
-class BrandModel extends GeneralModel {
-  BrandModel({
+class YearModel extends GeneralModel {
+  YearModel({
     required super.code,
     required super.name,
   });
@@ -13,8 +13,8 @@ class BrandModel extends GeneralModel {
     };
   }
 
-  factory BrandModel.fromJson(Map<String, dynamic> json) {
-    return BrandModel(
+  factory YearModel.fromJson(Map<String, dynamic> json) {
+    return YearModel(
       code: json["codigo"] ?? "",
       name: json["nome"] ?? "",
     );

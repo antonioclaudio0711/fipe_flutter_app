@@ -29,7 +29,7 @@ class _VehiclesListViewState extends State<VehiclesListView> {
         ),
       ),
       scaffoldBody: FutureBuilder(
-        future: _controller.getInitialVehiclesList(),
+        future: _controller.getInitialLocalVehiclesList(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -37,15 +37,15 @@ class _VehiclesListViewState extends State<VehiclesListView> {
             );
           } else {
             return ValueListenableBuilder(
-              valueListenable: _controller.vehiclesList,
-              builder: (context, vehiclesList, _) {
-                if (vehiclesList.isEmpty) {
+              valueListenable: _controller.localVehiclesList,
+              builder: (context, localVehiclesList, _) {
+                if (localVehiclesList.isEmpty) {
                   return Center(
                     child: Container(
                       margin: const EdgeInsets.all(20),
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: Colors.grey,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: const Text(
@@ -58,7 +58,7 @@ class _VehiclesListViewState extends State<VehiclesListView> {
                   );
                 } else {
                   return ListView.separated(
-                    itemCount: vehiclesList.length,
+                    itemCount: localVehiclesList.length,
                     padding: const EdgeInsets.only(top: 20, bottom: 20),
                     separatorBuilder: (context, index) =>
                         const SizedBox(height: 20),
@@ -66,8 +66,8 @@ class _VehiclesListViewState extends State<VehiclesListView> {
                       return GestureDetector(
                         onTap: () {},
                         child: VehicleListCard(
-                          vehicleModel: vehiclesList[index].model!,
-                          vehicleBrand: vehiclesList[index].brand!,
+                          vehicleModel: localVehiclesList[index].model,
+                          vehicleBrand: localVehiclesList[index].brand,
                         ),
                       );
                     },

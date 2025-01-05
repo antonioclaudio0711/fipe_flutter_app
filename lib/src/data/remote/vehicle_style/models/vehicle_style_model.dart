@@ -4,13 +4,13 @@ class VehicleStyleModel {
     required this.name,
   });
 
-  final int? code;
-  final String? name;
+  final int code;
+  final String name;
 
   Map<String, dynamic> toJson() {
     return {
-      "codigo": code ?? 0000,
-      "nome": name ?? "",
+      "codigo": code,
+      "nome": name,
     };
   }
 

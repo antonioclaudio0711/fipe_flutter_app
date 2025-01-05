@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class CustomizeAppScaffold extends StatelessWidget {
   const CustomizeAppScaffold({
     super.key,
+    this.appBarTitle,
     this.floatingActionButton,
     required this.scaffoldBody,
   });
 
+  final Widget? appBarTitle;
   final FloatingActionButton? floatingActionButton;
   final Widget scaffoldBody;
 
@@ -18,6 +20,8 @@ class CustomizeAppScaffold extends StatelessWidget {
       child: Scaffold(
         drawer: const CustomizeAppDrawer(),
         appBar: AppBar(
+          centerTitle: true,
+          title: appBarTitle,
           backgroundColor: Colors.black,
           iconTheme: const IconThemeData(color: Colors.white),
         ),

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:fipe_app/src/core/utils/app_routes.dart';
-import 'package:fipe_app/src/data/general/models/vehicle_model.dart';
+import 'package:fipe_app/src/data/local/local_vehicle/models/local_vehicle_model.dart';
 import 'package:fipe_app/src/service/navigation/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -12,20 +12,23 @@ class VehiclesListController extends ChangeNotifier {
 
   final _navigationService = GetIt.I<NavigationService>();
 
-  ValueNotifier<List<VehicleModel>> vehiclesList = ValueNotifier([]);
+  ValueNotifier<List<LocalVehicleModel>> localVehiclesList = ValueNotifier([]);
 
-  Future<void> getInitialVehiclesList() async {
+  Future<void> getInitialLocalVehiclesList() async {
     await Future.delayed(const Duration(seconds: 1));
 
     final SharedPreferences preferences = await SharedPreferences.getInstance();
-    final List<String>? jsonList = preferences.getStringList('vehiclesList');
+    final List<String>? jsonList =
+        preferences.getStringList('localVehiclesList');
 
-    if (jsonList == null || jsonList.isEmpty) {
+    if (jsonList == null) {
+      await preferences.setStringList('localVehiclesList', []);
+    } else if (jsonList.isEmpty) {
       return;
     } else {
-      vehiclesList.value = jsonList.map((vehicleModel) {
-        return VehicleModel.fromJson(
-          jsonDecode(vehicleModel),
+      localVehiclesList.value = jsonList.map((localVehicleModelStr) {
+        return LocalVehicleModel.fromJson(
+          jsonDecode(localVehicleModelStr),
         );
       }).toList();
     }

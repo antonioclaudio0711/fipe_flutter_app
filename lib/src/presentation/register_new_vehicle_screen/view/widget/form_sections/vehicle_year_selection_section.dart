@@ -3,38 +3,40 @@ import 'package:fipe_app/src/presentation/register_new_vehicle_screen/controller
 import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 
-class VehicleBrandSelectionSection extends StatelessWidget {
-  const VehicleBrandSelectionSection({super.key, required this.controller});
+class VehicleYearSelectionSection extends StatelessWidget {
+  const VehicleYearSelectionSection({
+    super.key,
+    required this.controller,
+  });
 
   final RegisterNewVehicleController controller;
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: controller.brandsList,
-      builder: (context, brandsList, _) {
-        if (brandsList.isNotEmpty) {
+      valueListenable: controller.yearsList,
+      builder: (context, yearsList, _) {
+        if (yearsList.isNotEmpty) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(AppStrings.vehicleBrandString),
+                const Text(AppStrings.vehicleYearString),
                 CustomDropdown(
                   dropdownWidth: MediaQuery.of(context).size.width / 2,
-                  selectedValue: controller.selectedBrandCode.value,
-                  dropDownItems: brandsList.map(
-                    (brand) {
+                  selectedValue: controller.selectedYearCode.value,
+                  dropDownItems: yearsList.map(
+                    (year) {
                       return DropdownMenuItem<String>(
                         alignment: Alignment.center,
-                        value: brand.code,
-                        child: Text(brand.name),
+                        value: year.code,
+                        child: Text(year.name),
                       );
                     },
                   ).toList(),
-                  onChangedFunction: (String? brandCode) async {
-                    controller.selectBrand(brandCode: brandCode!);
-                    await controller.getVehiclesStyleList();
+                  onChangedFunction: (String? yearCode) {
+                    controller.selectYearCode(yearCode: yearCode!);
                   },
                 ),
               ],
