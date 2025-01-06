@@ -37,19 +37,26 @@ class CustomizeAppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.list),
             title: const Text(AppStrings.registeredVehiclesString),
-            onTap: () => navigateTo(context,
-                destinationRoute: AppRoutes.initialAppRoute),
+            onTap: () => navigateTo(
+              context,
+              destinationRoute: AppRoutes.initialAppRoute,
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.add),
             title: const Text(AppStrings.registerNewVehicleString),
-            onTap: () => navigateTo(context,
-                destinationRoute: AppRoutes.registerNewVehicleRoute),
+            onTap: () => navigateTo(
+              context,
+              destinationRoute: AppRoutes.registerNewVehicleRoute,
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.manage_search),
             title: const Text(AppStrings.singleConsultationString),
-            onTap: () {},
+            onTap: () => navigateTo(
+              context,
+              destinationRoute: AppRoutes.singleConsultationRoute,
+            ),
           ),
         ],
       ),

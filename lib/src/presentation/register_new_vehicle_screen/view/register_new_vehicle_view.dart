@@ -2,13 +2,10 @@ import 'package:fipe_app/src/core/utils/app_routes.dart';
 import 'package:fipe_app/src/core/utils/app_strings.dart';
 import 'package:fipe_app/src/core/utils/common_widgets/customize_app_scaffold.dart';
 import 'package:fipe_app/src/core/utils/common_widgets/customize_button.dart';
+import 'package:fipe_app/src/core/utils/common_widgets/vehicle_form.dart';
 import 'package:fipe_app/src/presentation/register_new_vehicle_screen/controller/register_new_vehicle_controller.dart';
 import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/custom_alert_dialog.dart';
 import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/custom_labeled_text_field.dart';
-import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/form_sections/vehicle_brand_selection_section.dart';
-import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/form_sections/vehicle_model_selection_section.dart';
-import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/form_sections/vehicle_type_selection_section.dart';
-import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/form_sections/vehicle_year_selection_section.dart';
 import 'package:flutter/material.dart';
 
 class RegisterNewVehicleView extends StatelessWidget {
@@ -22,6 +19,7 @@ class RegisterNewVehicleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomizeAppScaffold(
+      canPop: false,
       appBarTitle: const Text(
         AppStrings.registerNewVehicleString,
         style: TextStyle(
@@ -36,10 +34,7 @@ class RegisterNewVehicleView extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              VehicleTypeSelectionSection(controller: _controller),
-              VehicleBrandSelectionSection(controller: _controller),
-              VehicleModelSelectionSection(controller: _controller),
-              VehicleYearSelectionSection(controller: _controller),
+              VehicleForm(controller: _controller),
               ValueListenableBuilder(
                 valueListenable: _controller.yearsList,
                 builder: (context, yearsList, _) {
@@ -69,7 +64,7 @@ class RegisterNewVehicleView extends StatelessWidget {
                                 buttonPadding: const EdgeInsets.only(top: 30),
                                 onTapFunction: () async {
                                   await _controller
-                                      .getFullInformationsFromVehicle();
+                                      .getFullInformationsFromVehicle(context);
 
                                   showDialog(
                                     context: context,

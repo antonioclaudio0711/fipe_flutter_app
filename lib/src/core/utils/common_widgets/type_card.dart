@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class VehicleTypeCard extends StatelessWidget {
-  const VehicleTypeCard({
+class TypeCard extends StatelessWidget {
+  const TypeCard({
     super.key,
     required this.onTapFunction,
     required this.cardName,

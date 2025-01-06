@@ -47,7 +47,7 @@ class CustomAlertDialog extends StatelessWidget {
             '${AppStrings.vehiclePlateString} ${vehiclePlate.isEmpty ? AppStrings.notInformedString : vehiclePlate}',
           ),
           Text(
-            '${AppStrings.vehicleColorString} ${vehicleColor.isEmpty ? AppStrings.notInformedString : vehiclePlate}',
+            '${AppStrings.vehicleColorString} ${vehicleColor.isEmpty ? AppStrings.notInformedString : vehicleColor}',
           ),
         ],
       ),

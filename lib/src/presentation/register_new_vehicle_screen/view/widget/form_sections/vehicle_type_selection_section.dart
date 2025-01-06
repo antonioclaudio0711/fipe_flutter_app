@@ -1,16 +1,17 @@
 import 'package:fipe_app/src/core/utils/app_strings.dart';
 import 'package:fipe_app/src/core/utils/utils.dart';
-import 'package:fipe_app/src/presentation/register_new_vehicle_screen/controller/register_new_vehicle_controller.dart';
-import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/vehicle_type_card.dart';
+import 'package:fipe_app/src/core/utils/common_widgets/type_card.dart';
 import 'package:flutter/material.dart';
 
-class VehicleTypeSelectionSection extends StatelessWidget {
+class VehicleTypeSelectionSection<T> extends StatelessWidget {
   const VehicleTypeSelectionSection({super.key, required this.controller});
 
-  final RegisterNewVehicleController controller;
+  final T controller;
 
   @override
   Widget build(BuildContext context) {
+    final specificController = verifyController(controller: controller);
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 30),
       child: Column(
@@ -22,12 +23,13 @@ class VehicleTypeSelectionSection extends StatelessWidget {
             children: vehicleTypes.map(
               (vehicleType) {
                 return ValueListenableBuilder(
-                  valueListenable: controller.selectedVehicleTypeButton,
+                  valueListenable: specificController.selectedVehicleTypeButton,
                   builder: (context, selectedVehicleTypeButton, _) {
-                    return VehicleTypeCard(
+                    return TypeCard(
                       onTapFunction: () async {
-                        controller.selectVehicleType(vehicleType: vehicleType);
-                        await controller.getBrandsList();
+                        specificController.selectVehicleType(
+                            vehicleType: vehicleType);
+                        await specificController.getBrandsList(context);
                       },
                       cardName: vehicleType,
                       buttonBackgroundColor:

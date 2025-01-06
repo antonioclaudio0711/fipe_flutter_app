@@ -1,17 +1,21 @@
 import 'package:fipe_app/src/core/utils/app_strings.dart';
-import 'package:fipe_app/src/presentation/register_new_vehicle_screen/controller/register_new_vehicle_controller.dart';
+import 'package:fipe_app/src/core/utils/utils.dart';
+import 'package:fipe_app/src/data/remote/brand/models/brand_model.dart';
 import 'package:fipe_app/src/presentation/register_new_vehicle_screen/view/widget/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 
-class VehicleBrandSelectionSection extends StatelessWidget {
+class VehicleBrandSelectionSection<T> extends StatelessWidget {
   const VehicleBrandSelectionSection({super.key, required this.controller});
 
-  final RegisterNewVehicleController controller;
+  final T controller;
 
   @override
   Widget build(BuildContext context) {
+    final specificController = verifyController(controller: controller);
+
     return ValueListenableBuilder(
-      valueListenable: controller.brandsList,
+      valueListenable:
+          specificController.brandsList as ValueNotifier<List<BrandModel>>,
       builder: (context, brandsList, _) {
         if (brandsList.isNotEmpty) {
           return Padding(
@@ -22,7 +26,7 @@ class VehicleBrandSelectionSection extends StatelessWidget {
                 const Text(AppStrings.vehicleBrandString),
                 CustomDropdown(
                   dropdownWidth: MediaQuery.of(context).size.width / 2,
-                  selectedValue: controller.selectedBrandCode.value,
+                  selectedValue: specificController.selectedBrandCode.value,
                   dropDownItems: brandsList.map(
                     (brand) {
                       return DropdownMenuItem<String>(
@@ -33,8 +37,8 @@ class VehicleBrandSelectionSection extends StatelessWidget {
                     },
                   ).toList(),
                   onChangedFunction: (String? brandCode) async {
-                    controller.selectBrand(brandCode: brandCode!);
-                    await controller.getVehiclesStyleList();
+                    specificController.selectBrand(brandCode: brandCode!);
+                    await specificController.getVehiclesStyleList(context);
                   },
                 ),
               ],

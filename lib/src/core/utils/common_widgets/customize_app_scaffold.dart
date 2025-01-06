@@ -7,16 +7,20 @@ class CustomizeAppScaffold extends StatelessWidget {
     this.appBarTitle,
     this.floatingActionButton,
     required this.scaffoldBody,
+    required this.canPop,
+    this.appBarActionsWidgetsList,
   });
 
   final Widget? appBarTitle;
   final FloatingActionButton? floatingActionButton;
   final Widget scaffoldBody;
+  final bool canPop;
+  final List<Widget>? appBarActionsWidgetsList;
 
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: false,
+      canPop: canPop,
       child: Scaffold(
         drawer: const CustomizeAppDrawer(),
         appBar: AppBar(
@@ -24,6 +28,7 @@ class CustomizeAppScaffold extends StatelessWidget {
           title: appBarTitle,
           backgroundColor: Colors.black,
           iconTheme: const IconThemeData(color: Colors.white),
+          actions: appBarActionsWidgetsList,
         ),
         floatingActionButton: floatingActionButton,
         body: scaffoldBody,

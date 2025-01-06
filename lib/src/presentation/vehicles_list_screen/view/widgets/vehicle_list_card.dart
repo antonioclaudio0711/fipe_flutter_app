@@ -1,18 +1,21 @@
-import 'package:fipe_app/src/core/utils/app_assets.dart';
+import 'package:fipe_app/src/core/utils/utils.dart';
+import 'package:fipe_app/src/data/local/local_vehicle/models/local_vehicle_model.dart';
 import 'package:flutter/material.dart';
 
 class VehicleListCard extends StatelessWidget {
   const VehicleListCard({
     super.key,
-    required this.vehicleModel,
-    required this.vehicleBrand,
+    required this.localVehicleModel,
   });
 
-  final String vehicleModel;
-  final String vehicleBrand;
+  final LocalVehicleModel localVehicleModel;
 
   @override
   Widget build(BuildContext context) {
+    final String cardImage = cardImageAccordingVehicleType(
+      vehicleType: localVehicleModel.vehicleType,
+    );
+
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(left: 16, right: 16),
@@ -27,7 +30,7 @@ class VehicleListCard extends StatelessWidget {
           SizedBox(
             width: 80,
             height: 80,
-            child: Image.asset(AppAssets.vectorCarAsset),
+            child: Image.asset(cardImage),
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width / 1.8,
@@ -35,12 +38,12 @@ class VehicleListCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  vehicleModel,
+                  localVehicleModel.model,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  vehicleBrand,
+                  localVehicleModel.brand,
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
