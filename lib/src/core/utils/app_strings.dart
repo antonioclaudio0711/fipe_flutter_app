@@ -40,4 +40,6 @@ class AppStrings {
   static const registeredBrandString = 'Marca';
   static const registeredYearModelString = 'Ano modelo';
   static const registeredFuelTypeString = 'Tipo de combustível';
+  static const priceSearchUnavailableString =
+      'Consulta de preço na tabela FIPE indisponível por falta de conexão à internet';
 }

@@ -20,6 +20,7 @@ dependencies:
   fpdart: ^1.1.1 # Biblioteca utilizada para realizar validações após requisições HTTP e conexão com API
   shared_preferences: ^2.3.5 # Biblioteca utilizada para armazenamento interno
   dropdown_button2: ^2.3.9 # Biblioteca utilizada para composição do widget de Dropdown utilizado no projeto
+  internet_connection_checker_plus: ^2.7.0
 
 dev_dependencies:
   flutter_test:
