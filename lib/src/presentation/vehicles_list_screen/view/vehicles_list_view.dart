@@ -2,6 +2,7 @@ import 'package:fipe_app/src/core/utils/app_strings.dart';
 import 'package:fipe_app/src/core/utils/app_routes.dart';
 import 'package:fipe_app/src/core/utils/common_widgets/customize_app_scaffold.dart';
 import 'package:fipe_app/src/core/utils/common_widgets/customize_button.dart';
+import 'package:fipe_app/src/core/utils/common_widgets/customize_informative_container.dart';
 import 'package:fipe_app/src/presentation/vehicles_list_screen/controller/vehicles_list_controller.dart';
 import 'package:fipe_app/src/presentation/vehicles_list_screen/view/widgets/clean_list_alert_dialog.dart';
 import 'package:fipe_app/src/presentation/vehicles_list_screen/view/widgets/filter_alert_dialog.dart';
@@ -70,20 +71,12 @@ class _VehiclesListViewState extends State<VehiclesListView> {
               valueListenable: _controller.filteredVehiclesList,
               builder: (context, filteredVehiclesList, _) {
                 if (filteredVehiclesList.isEmpty) {
-                  return Center(
-                    child: Container(
-                      margin: const EdgeInsets.all(20),
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Text(
-                        AppStrings.registeredVehiclesUnfoundString,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
+                  return const Center(
+                    child: CustomizeInformativeContainer(
+                      informativeContainerText:
+                          AppStrings.registeredVehiclesUnfoundString,
+                      informativeContainerBackgroundColor: Colors.grey,
+                      informativeContainerTextColor: Colors.white,
                     ),
                   );
                 } else {
@@ -123,7 +116,7 @@ class _VehiclesListViewState extends State<VehiclesListView> {
                                     _controller.turnToOriginalList(),
                                 buttonBackgroundColor: Colors.grey,
                                 buttonTextColor: Colors.white,
-                                buttonText: 'Voltar à listagem original',
+                                buttonText: AppStrings.backToOriginalListString,
                               ),
                             );
                           } else {

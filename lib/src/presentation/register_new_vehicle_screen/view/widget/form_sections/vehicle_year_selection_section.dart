@@ -35,7 +35,10 @@ class VehicleYearSelectionSection<T> extends StatelessWidget {
                       return DropdownMenuItem<String>(
                         alignment: Alignment.center,
                         value: year.code,
-                        child: Text(year.name),
+                        child: Text(
+                          year.name,
+                          style: const TextStyle(fontSize: 14),
+                        ),
                       );
                     },
                   ).toList(),

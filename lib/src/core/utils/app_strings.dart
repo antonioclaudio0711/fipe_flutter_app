@@ -30,7 +30,14 @@ class AppStrings {
   static const doYouWishToCleanVehiclesListString =
       'Deseja limpar a lista de veículos cadastrados?';
   static const cleanListString = 'Limpar lista';
-  static const filterRegisteredVehiclesList =
+  static const filterRegisteredVehiclesListString =
       'Filtrar lista de veículos cadastrados';
-  static const applyFilter = 'Aplicar filtro';
+  static const applyFilterString = 'Aplicar filtro';
+  static const backToOriginalListString = 'Voltar à listagem original';
+  static const registeredPlateString = 'Placa';
+  static const registeredColorString = 'Cor';
+  static const registeredModelString = 'Model';
+  static const registeredBrandString = 'Marca';
+  static const registeredYearModelString = 'Ano modelo';
+  static const registeredFuelTypeString = 'Tipo de combustível';
 }

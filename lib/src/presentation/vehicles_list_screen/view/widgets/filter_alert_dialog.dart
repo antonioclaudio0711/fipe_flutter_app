@@ -16,7 +16,7 @@ class FilterAlertDialog extends StatelessWidget {
     return AlertDialog(
       title: const Center(
         child: Text(
-          AppStrings.filterRegisteredVehiclesList,
+          AppStrings.filterRegisteredVehiclesListString,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
@@ -109,7 +109,7 @@ class FilterAlertDialog extends StatelessWidget {
                 },
                 buttonBackgroundColor: Colors.green,
                 buttonTextColor: Colors.white,
-                buttonText: AppStrings.applyFilter,
+                buttonText: AppStrings.applyFilterString,
               );
             } else {
               return Container();

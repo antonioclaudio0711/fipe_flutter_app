@@ -32,7 +32,10 @@ class VehicleBrandSelectionSection<T> extends StatelessWidget {
                       return DropdownMenuItem<String>(
                         alignment: Alignment.center,
                         value: brand.code,
-                        child: Text(brand.name),
+                        child: Text(
+                          brand.name,
+                          style: const TextStyle(fontSize: 14),
+                        ),
                       );
                     },
                   ).toList(),
